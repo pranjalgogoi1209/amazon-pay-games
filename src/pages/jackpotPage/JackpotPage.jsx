@@ -16,7 +16,7 @@ export default function JackpotPage() {
   useEffect(() => {
     setTimeout(() => {
       setIsGameStarted(false);
-    }, 20000);
+    }, 12000);
   }, [isGameStarted]);
 
   const shuffleArray = (arr) => {
@@ -41,9 +41,7 @@ export default function JackpotPage() {
     const symbolContent = [
       ...shuffleArray(iconsArr),
       ...shuffleArray(iconsArr),
-    ].map((symbol, idx) => (
-      <img src={symbol} alt={`icon ${idx + 1}`} key={idx} />
-    ));
+    ].map((symbol, idx) => <img src={symbol} alt={`icon ${idx + 1}`} />);
 
     //
     //<div>{iconsArr[ans]}</div>

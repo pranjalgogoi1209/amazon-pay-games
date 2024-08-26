@@ -31,23 +31,23 @@
 .cou__content--animate .cou__item--decimal:before,
 .cou.cou--small .cou__content--animate .cou__item--digit:before,
 .cou.cou--small .cou__content--animate .cou__item--decimal:before {
-  animation: cou-bounce 10.5s forwards;
+  animation: cou-bounce 8s forwards;
 }
 
 @keyframes cou-bounce {
   0% {
     transform: translateY(0);
   }
-  35% {
-    transform: translateY(-52em);
+  70% {
+    transform: translateY(-51.8em);
   }
-  65% {
-    transform: translateY(-51em);
+  85% {
+    transform: translateY(-51.5em);
   }
-  90% {
+  95% {
     transform: translateY(-51.7em);
   }
   100% {
-    transform: translateY(-51.5em);
+    transform: translateY(-51.6em);
   }
 }
