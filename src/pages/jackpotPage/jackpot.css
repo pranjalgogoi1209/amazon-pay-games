@@ -1,0 +1,53 @@
+.cou__item {
+  position: relative;
+}
+
+/* .cou.cou--single-line .cou__content.cou__content--animate {
+  animation-delay: 0s;
+}
+
+.cou__content--animate,
+.cou.cou--single-line .cou__content.cou__content--animate {
+  animation-delay: 0.2s;
+}
+
+.cou__content--animate
+  .cou__content__digit:nth-child(1)
+  .cou__item--digit:before {
+  animation-delay: 0.3s;
+}
+
+.cou__content__digit:nth-child(2) .cou__item--digit:before {
+  animation-delay: 0.5s;
+}
+
+.cou__content--animate
+  .cou__content__digit:nth-child(3)
+  .cou__item--digit:before {
+  animation-delay: 0.7s;
+} */
+
+.cou__content--animate .cou__item--digit,
+.cou__content--animate .cou__item--decimal:before,
+.cou.cou--small .cou__content--animate .cou__item--digit:before,
+.cou.cou--small .cou__content--animate .cou__item--decimal:before {
+  animation: cou-bounce 10.5s forwards;
+}
+
+@keyframes cou-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-52em);
+  }
+  65% {
+    transform: translateY(-51em);
+  }
+  90% {
+    transform: translateY(-51.7em);
+  }
+  100% {
+    transform: translateY(-51.5em);
+  }
+}
