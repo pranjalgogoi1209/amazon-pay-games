@@ -2,17 +2,22 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --themeColor1: #ec6519;
+  --themeColor2: #fff;
+  --themeColor3: #00a500;
+  --textColor: #003974;
 }
 
 body {
-
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  /* background: url("./assets/bg.png") center / cover no-repeat; */
   height: 100dvh;
   overflow-x: hidden;
 }
-
 
 a {
   /* color: #646cff; */
@@ -24,13 +29,14 @@ img {
   width: 100%;
 }
 
-
-
 button {
   border: none;
   outline: none;
 }
 
+.btn {
+  /* write btn css */
+}
 
 .flex-row-center {
   display: flex;
