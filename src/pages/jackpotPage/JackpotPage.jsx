@@ -13,11 +13,11 @@ import jackpotLeaver from "./../../assets/jackpotPage/leaver.png";
 export default function JackpotPage() {
   const [isGameStarted, setIsGameStarted] = useState(false);
 
-  useEffect(() => {
+  /* useEffect(() => {
     setTimeout(() => {
       setIsGameStarted(false);
     }, 12000);
-  }, [isGameStarted]);
+  }, [isGameStarted]); */
 
   const shuffleArray = (arr) => {
     const shuffledArr = [...arr];
@@ -45,8 +45,8 @@ export default function JackpotPage() {
 
     //
     //<div>{iconsArr[ans]}</div>
-
-    symbolContent.splice(13, 0, <img src={iconsArr[ans]} alt="replaceIcon" />);
+    // 23
+    symbolContent.splice(23, 0, <img src={iconsArr[ans]} alt="replaceIcon" />);
     return symbolContent;
   };
 
@@ -70,17 +70,20 @@ export default function JackpotPage() {
           <img src={jackpotLeaver} alt="jackpot-leaver" />
         </div>
 
+        {/* jackpot container */}
         <div
-          className={`flex-row-center ${
-            isGameStarted ? "cou__content--animate" : ""
-          } ${styles.jackpotContainer}`}
+          className={`flex-row-center ${styles.jackpotContainer}  ${
+            isGameStarted ? styles.startGame : ""
+          }`}
         >
-          <div
-            className={`flex-row-center cou__content__digit ${styles.singleIcon}`}
-          >
-            <div
-              className={`cou__item cou__item--3 cou__item--digit ${styles.imgContainer}`}
-            >
+          <div className={`flex-row-center  ${styles.singleIcon}`}>
+            <div className={`cou__item--digit ${styles.imgContainer}`}>
+              {getSymbolContent(2)}
+            </div>
+          </div>
+
+          <div className={`flex-row-center ${styles.singleIcon}`}>
+            <div className={`cou__item--digit ${styles.imgContainer}`}>
               {getSymbolContent(2)}
             </div>
           </div>
@@ -88,19 +91,7 @@ export default function JackpotPage() {
           <div
             className={`flex-row-center cou__content__digit ${styles.singleIcon}`}
           >
-            <div
-              className={`cou__item cou__item--3 cou__item--digit ${styles.imgContainer}`}
-            >
-              {getSymbolContent(2)}
-            </div>
-          </div>
-
-          <div
-            className={`flex-row-center cou__content__digit ${styles.singleIcon}`}
-          >
-            <div
-              className={`cou__item cou__item--3 cou__item--digit ${styles.imgContainer}`}
-            >
+            <div className={`cou__item--digit ${styles.imgContainer}`}>
               {getSymbolContent(2)}
             </div>
           </div>

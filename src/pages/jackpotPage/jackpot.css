@@ -1,7 +1,3 @@
-.cou__item {
-  position: relative;
-}
-
 /* .cou.cou--single-line .cou__content.cou__content--animate {
   animation-delay: 0s;
 }
@@ -26,28 +22,3 @@
   .cou__item--digit:before {
   animation-delay: 0.7s;
 } */
-
-.cou__content--animate .cou__item--digit,
-.cou__content--animate .cou__item--decimal:before,
-.cou.cou--small .cou__content--animate .cou__item--digit:before,
-.cou.cou--small .cou__content--animate .cou__item--decimal:before {
-  animation: cou-bounce 8s forwards;
-}
-
-@keyframes cou-bounce {
-  0% {
-    transform: translateY(0);
-  }
-  70% {
-    transform: translateY(-51.8em);
-  }
-  85% {
-    transform: translateY(-51.5em);
-  }
-  95% {
-    transform: translateY(-51.7em);
-  }
-  100% {
-    transform: translateY(-51.6em);
-  }
-}
