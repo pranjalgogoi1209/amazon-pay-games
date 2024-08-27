@@ -1,42 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./spinTwoPage.module.css";
-import { wheelTwoList } from "../../data/wheelsList";
+import { wheelOneList } from "../../data/wheelsList";
 import spinPointer from "../../assets/spin one/pointer.png";
 import spinnerBase from "../../assets/spin one/stand.png";
 import btnIcon from '../../assets/spin one/btnicon.png'
+import spin_button from '../../assets/spin one/spin_btn.png'
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/header/Header";
+import pointsBg from "./../../assets/quizPage/points-bg.png";
 
-// winning angle 5607deg
+
+// 5890deg
 const angleArray = [
+  3600,
+  7264,  // 3600 + 32 + 3632 (next step doubled)
+  14600, // 7264 + 60 = 7324, next step doubled
   29088, // 14524 + 30 = 14554, next step doubled
-  14700, // 7264 + 60 = 7324, next step doubled
-  7464,  // 3600 + 32 + 3632 (next step doubled)
-3900,
 ];
 
 export default function SpinTwoPage() {
-    const [isSpin, setIsSpin] = useState(false);
-    const [spinLeft,setSpinLeft]=useState(3);
+  const [isSpin, setIsSpin] = useState(false);
+  const [spinLeft,setSpinLeft]=useState(3);
   const [randomNumber, setRandomNumber] = useState(
-    Math.floor(Math.random() * wheelTwoList.length)
+    Math.floor(Math.random() * wheelOneList.length)
   );
-  const [rotation, setRotaion] = useState(0);
-  const [randomWin,setRandomWin] = useState(Math.floor(Math.random()*3)+1);
+  const [randomWin,setRandomWin]=useState(Math.floor(Math.random()*3)+1)
   const [isWin,setIsWin]=useState('');
 
-  console.log(randomWin,isWin,spinLeft,'random win is win and spin left')
-  const navigate = useNavigate();
+  console.log(randomWin,spinLeft, isWin,'random_number spin_left winstatus ');
+  
+  const [rotation, setRotaion] = useState(0);
+  const [spinScore,setSpinScore]=useState(0);
+
+
 
   const generateButtonName = () => {
     const btn = <img src={btnIcon} alt="icon"  />;
+    const spinBTn = <img src={spin_button} alt="button" />
     if (isSpin) return "Spinning...";
     if (spinLeft === 3) return "Spin Now";
     if (spinLeft > 0) return <>{btn}Try Again</>;
     return "No Spins Left";
-  };
+};
+
+const navigate = useNavigate();
+
+  const generateIcon=()=>{
+    if(spinLeft==3) return;
+    if(spinLeft>0) return btnIcon;
+  }
+
+  const handleSpinScore=(score)=>{
+    setTimeout(()=>{
+      setSpinScore(prev=>prev+score);
+    },6000)
+  }
 
   const spinTheWheel = () => {
-     
+    
     if(isSpin || spinLeft==0) return
 
     setIsSpin(true);
@@ -46,18 +67,18 @@ export default function SpinTwoPage() {
         if(randomWin==spinLeft){
           console.log('confirm win');
           setRotaion(5890);
-          setTimeout(()=>{
-            navigate('/')
-          },8000)
+         handleSpinScore(5);
           // return
         }else{
           setRotaion(angleArray[spinLeft]);
           setSpinLeft(prev=>prev-1);
+          handleSpinScore(1)
         }
-    }else{
-      if(spinLeft>0){ 
-        setRotaion(angleArray[spinLeft]);
-        setSpinLeft(prev=>prev-1);
+      }else{
+        if(spinLeft>0){ 
+          setRotaion(angleArray[spinLeft]);
+          setSpinLeft(prev=>prev-1);
+          handleSpinScore(1);
       }else{
         console.log('no spin left')
       }
@@ -66,18 +87,61 @@ export default function SpinTwoPage() {
     setTimeout(()=>{
       setIsSpin(false);
     },6000);
+    
   };
+
+  useEffect(()=>{
+    const getWin=async()=>{
+      try {
+           const response = await fetch(`https://analytiq4.com/amazon-pay/spin-the-wheel/fetch.php`)
+           .then((res)=>{
+            return res.json()
+           }).then((data)=>{
+            console.log(data)
+            setIsWin(data.Win)
+           })
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    // getWin();
+
+  },[]);
+
+  useEffect(()=>{
+    if(isSpin){
+      const randomId = Math.floor(Math.random() * wheelOneList.length)
+      setRandomNumber(randomId)
+    }
+    if(spinLeft==0 && !isSpin){
+      console.log('left nothing')
+      setTimeout(()=>{
+       navigate('/');
+      },2000);
+    }
+    console.log(spinLeft,'spin left inside isspin effect');
+  },[isSpin])
 
   return (
     <div className={`flex-col-center ${styles.SpinOnePage}`}>
       {/* heading */}
-      {/* <div className={`flex-col-center ${styles.heading}`}>
-        <h2>Spin & Win</h2>
-      </div> */}
+      <Header title={'spin-two'} />
+      
       {/* spin the wheel */}
 
       {/* wheel wrapper */}
       <div className={`flex-col-center ${styles.wheelWrapper}`}>
+
+        {/* points */}
+        <div className={`flex-row-center ${styles.pointsContainer}`}>
+          <div className={`flex-row-center ${styles.pointsBg}`}>
+            <img src={pointsBg} alt="points-bg" />
+          </div>
+
+          <p className={styles.pointsTxt}>
+            {spinScore}
+          </p>
+        </div>
 
         {/* wheel container */}
 
@@ -95,7 +159,7 @@ export default function SpinTwoPage() {
             }}
           >
             {/* {(totalSpin==10 && !isSpin) && <Confetti />} */}
-            <img src={wheelTwoList[randomNumber]} alt="wheel" />
+            <img src={wheelOneList[randomNumber]} alt="wheel" />
           </div>
 
           {/* pointer */}
@@ -116,7 +180,9 @@ export default function SpinTwoPage() {
         {/* button div */}
 
         <div className={`flex-col-center ${styles.buttonDiv}`}>
-          <button className={`flex-row-center `} onClick={spinTheWheel}>{generateButtonName()}</button>
+          <button className={`flex-row-center`} onClick={spinTheWheel} disabled={isSpin ? true : false}>
+            {generateButtonName()}
+            </button>
         </div>
       </div>
     </div>
