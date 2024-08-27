@@ -1,9 +1,13 @@
 .Header {
-  border: 1px solid red;
+  /* border: 1px solid blue; */
   width: 100%;
-  height: 32vh;
-  gap: 8vh;
-  .logoContainer {
-    height: 6vh;
+  /* height: 32vh; */
+  padding: 1vh;
+  .payIcon {
+    height: 8vh;
+    align-self: flex-start;
+  }
+  .gameHeading {
+    height: 17vh;
   }
 }
