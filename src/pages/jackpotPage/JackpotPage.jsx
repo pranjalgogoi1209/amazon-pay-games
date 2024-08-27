@@ -7,6 +7,7 @@ import Header from "../../components/header/Header";
 import iconsArr from "../../utils/jackpot";
 
 import jackpotImg from "./../../assets/jackpotPage/jackpot.png";
+import spriteSheet from "./../../assets/jackpotPage/spritesheet.png";
 
 export default function JackpotPage({ data, updateData }) {
   const navigate = useNavigate();
@@ -105,7 +106,7 @@ export default function JackpotPage({ data, updateData }) {
         >
           <Spritesheet
             className={styles.spriteSheet}
-            image={"https://analytiq4.com/amazon-pay/spritesheet.png"}
+            image={spriteSheet}
             widthFrame={459}
             heightFrame={978}
             steps={46}
