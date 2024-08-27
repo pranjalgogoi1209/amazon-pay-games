@@ -105,7 +105,7 @@ export default function JackpotPage({ data, updateData }) {
         >
           <Spritesheet
             className={styles.spriteSheet}
-            image={"/src/assets/jackpotPage/spritesheet.png"}
+            image={"https://analytiq4.com/amazon-pay/spritesheet.png"}
             widthFrame={459}
             heightFrame={978}
             steps={46}
