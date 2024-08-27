@@ -7,7 +7,7 @@ import btnIcon from '../../assets/spin one/btnicon.png'
 import spin_button from '../../assets/spin one/spin_btn.png'
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
-import pointsBg from "./../../assets/quizPage/points-bg.png";
+import pointsBg from "./../../assets/points-bg.png";
 
 
 // 5890deg
@@ -66,7 +66,7 @@ const navigate = useNavigate();
         console.log('is win true');
         if(randomWin==spinLeft){
           console.log('confirm win');
-          setRotaion(5890);
+          setRotaion(5888);
          handleSpinScore(5);
           // return
         }else{
