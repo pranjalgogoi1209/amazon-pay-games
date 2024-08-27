@@ -7,16 +7,18 @@ import btnIcon from '../../assets/spin one/btnicon.png'
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import pointsBg from "./../../assets/points-bg.png";
+import spinFirst from './../../assets/spin one/spin_first.png'
+import try_again_icon from './../../assets/spin one/spin_try.png';
 
 // winning angle 5640
 const angleArray = [
   29088, // 14524 + 30 = 14554, next step doubled
   14700, // 7264 + 60 = 7324, next step doubled
-  7464,  // 3600 + 32 + 3632 (next step doubled)
+  7494,  // 3600 + 32 + 3632 (next step doubled)
   3900,
 ];
 
-export default function SpinOnePage() {
+export default function SpinOnePage({data,updateData}) {
     const [isSpin, setIsSpin] = useState(false);
     const [spinLeft,setSpinLeft]=useState(3);
   const [randomNumber, setRandomNumber] = useState(
@@ -31,9 +33,10 @@ export default function SpinOnePage() {
   const navigate = useNavigate();
 
   const generateButtonName = () => {
-    const btn = <img src={btnIcon} alt="icon"  />;
+    const btn = <img src={try_again_icon} alt="icon"  />;
+    const spin_first_btn = <img src={spinFirst} alt="icon" />
     if (isSpin) return "Spinning...";
-    if (spinLeft === 3) return "Spin Now";
+    if (spinLeft === 3) return <>{spin_first_btn} Spin Now</>;
     if (spinLeft > 0) return <>{btn}Try Again</>;
     return "No Spins Left";
   };
@@ -96,11 +99,15 @@ export default function SpinOnePage() {
   },[]);
   useEffect(()=>{
     if(isSpin){
-      const randomId = Math.floor(Math.random() * wheelOneList.length)
+      const randomId = Math.floor(Math.random() * wheelTwoList.length)
       setRandomNumber(randomId)
     }
     if(spinLeft==0 && !isSpin){
       console.log('left nothing')
+      updateData({
+        points:spinScore,
+        isGameFinished:true
+      })
       setTimeout(()=>{
        navigate('/');
       },2000)
@@ -112,9 +119,7 @@ export default function SpinOnePage() {
     <div className={`flex-col-center ${styles.SpinOnePage}`}>
       {/* heading */}
       <Header title={'spin-one'} />
-      {/* <div className={`flex-col-center ${styles.heading}`}>
-        <h2>Spin & Win</h2>
-      </div> */}
+     
       {/* spin the wheel */}
 
       {/* wheel wrapper */}

@@ -16,10 +16,11 @@
       }
       .pointsTxt {
         position: absolute;
-        right: 3%;
+        top: 29%;
+        right: 4%;
         color: #fff;
         font-weight: 600;
-        font-size: 3vh;
+        font-size: 3.2vh;
       }
     }
 
