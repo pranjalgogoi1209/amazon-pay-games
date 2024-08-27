@@ -11,7 +11,7 @@
     /* height: auto; */
     /* height: 70%; */
     /* justify-content: flex-start !important; */
-    border: 2px solid red;
+    /* border: 2px solid red; */
     /* justify-content: flex-start !important; */
     position: relative;
      gap: 3vh;
@@ -62,21 +62,25 @@
     }
     .spinnerBase{
         /* border: 2px solid red; */
-        width: 65%;
+        width: 70%;
         z-index: 1;
         position: relative;
         bottom: 13vw;
     }
   }
   }
-
-    .spinBtn{
-      width: 24vh !important;
-      gap: 2vw;
-      padding: 1vh;
-      img{
-      width: 7vw;  
-      height: auto;
+    .buttonDiv{
+      /* border: 2px solid red; */
+      position: absolute ;
+      bottom: -7vw;
+      .spinBtn{
+        width: 24vh !important;
+        gap: 2vw;
+        padding: 1vh;
+        img{
+        width: 7vw;  
+        height: auto;
+        }
       }
     }
   

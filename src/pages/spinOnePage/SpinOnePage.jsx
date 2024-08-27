@@ -10,7 +10,7 @@ import pointsBg from "./../../assets/points-bg.png";
 import spinFirst from './../../assets/spin one/spin_first.png'
 import try_again_icon from './../../assets/spin one/spin_try.png';
 
-// winning angle 5635
+// winning angle 17870
 const angleArray = [
   29220, // 14524 + 30 = 14554, next step doubled
   14760, // 7264 + 60 = 7324, next step doubled
@@ -57,7 +57,7 @@ export default function SpinOnePage({data,updateData}) {
         console.log('is win true');
         if(randomWin==spinLeft){
           console.log('confirm win');
-          setRotaion(5635);
+          setRotaion(17870);
           handleSpinScore(5);
           // return
         }else{
@@ -171,9 +171,9 @@ export default function SpinOnePage({data,updateData}) {
 
         {/* button div */}
 
-        {/* <div className={`flex-col-center  ${styles.buttonDiv}`}> */}
+        <div className={`flex-col-center  ${styles.buttonDiv}`}>
           <button className={`flex-row-center btn ${styles.spinBtn}`} onClick={spinTheWheel}>{generateButtonName()}</button>
-        {/* </div> */}
+        </div>
       </div>
     </div>
   );

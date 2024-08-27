@@ -62,7 +62,7 @@
     }
     .spinnerBase{
         /* border: 2px solid red; */
-        width: 65%;
+        width: 70%;
         z-index: 1;
         position: relative;
         bottom: 13vw;
@@ -70,14 +70,18 @@
   }
   }
     /* border: 2px solid red; */
-    .spinBtn{
-      /* width: 39vw; */
-      width: 24vh !important;
-      padding: 1vh;
-      gap: 2vw;
-      img{
-      width: 7vw;  
-      height: auto;
+    .buttonDiv{
+      position: absolute;
+      bottom: -7vw;
+      .spinBtn{
+        /* width: 39vw; */
+        width: 24vh !important;
+        padding: 1vh;
+        gap: 2vw;
+        img{
+        width: 7vw;  
+        height: auto;
+        }
       }
     }
   
