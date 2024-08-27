@@ -40,7 +40,18 @@ button {
 }
 
 .btn {
-  /* write btn css */
+  width: 20vh;
+  background-color: #333e47;
+  font-size: 3.3vh;
+  padding: 0.7vh 0;
+  border-radius: 20vh;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.4);
+}
+
+.btnDisabled {
+  opacity: 0.5;
 }
 
 .flex-row-center {

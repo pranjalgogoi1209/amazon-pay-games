@@ -1,3 +1,60 @@
 .QuizPage {
-  border: 1px solid black;
+  width: 100%;
+  height: 100dvh;
+  background: url("./../../assets/blue-bg.png") center / cover no-repeat;
+  justify-content: flex-start !important;
+  .gameWrapper {
+    width: 100%;
+    gap: 7vh;
+    .pointsContainer {
+      /* border: 1px solid red; */
+      width: 100%;
+      position: relative;
+      justify-content: flex-end !important;
+      .pointsBg {
+        height: 7vh;
+      }
+      .pointsTxt {
+        position: absolute;
+        right: 3%;
+        color: #fff;
+        font-weight: 600;
+        font-size: 3vh;
+      }
+    }
+
+    .questionWrapper {
+      /* border: 1px solid red; */
+      position: relative;
+      .question {
+        /* border: 1px solid red; */
+        height: 22vh;
+      }
+      .questionNo {
+        position: absolute;
+        color: #fff;
+        top: 2%;
+        font-weight: 600;
+        font-size: 3.3vh;
+      }
+    }
+
+    .optionsContainer {
+      /* border: 1px solid red; */
+      position: relative;
+      .singleOption {
+        /* border: 1px solid red; */
+        .optionBg {
+          height: 9vh;
+        }
+        .optionTxt {
+          position: absolute;
+          color: #fff;
+          top: 32%;
+          font-weight: 600;
+          font-size: 2.5vh;
+        }
+      }
+    }
+  }
 }

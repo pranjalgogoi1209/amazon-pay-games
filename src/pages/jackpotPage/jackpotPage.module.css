@@ -19,7 +19,7 @@
       position: absolute;
       height: 10vh;
       top: 30%;
-      right: 3%;
+      right: 2%;
       transition: transform 0.5s ease;
       transform: rotateX(0deg);
     }
@@ -29,16 +29,18 @@
       animation: rotate 2s linear infinite alternate-reverse;
       transform: rotateX(50deg);
     }
+
     .jackpotContainer {
       /* border: 1px solid black; */
       position: absolute;
       top: 37.8%;
       gap: 2vh;
       .singleIcon {
-        border: 2px solid transparent;
+        border: 2px solid red;
         overflow: hidden;
-        width: 7vh;
-        height: 9.5vh;
+        /* width: 7vh; */
+        width: 12vw;
+        height: 9.2vh;
         aspect-ratio: 1;
         .imgContainer {
           /* border: 2px solid red; */
@@ -50,11 +52,46 @@
   }
 }
 
-/* @keyframes rotate {
-  from {
-    transform: rotateX(0deg);
+.startGame {
+  .imgContainer {
+    animation: cou-bounce 8s forwards;
   }
-  to {
-    transform: rotateX(45deg);
+}
+
+/* screen */
+/* @keyframes cou-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-255rem);
+  }
+  85% {
+    transform: translateY(-253rem);
+  }
+  95% {
+    transform: translateY(-254.5rem);
+  }
+  100% {
+    transform: translateY(-253.5rem);
   }
 } */
+
+/* mobile */
+@keyframes cou-bounce {
+  0% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-88.5rem);
+  }
+  85% {
+    transform: translateY(-88.2rem);
+  }
+  95% {
+    transform: translateY(-88.4rem);
+  }
+  100% {
+    transform: translateY(-88.3rem);
+  }
+}
