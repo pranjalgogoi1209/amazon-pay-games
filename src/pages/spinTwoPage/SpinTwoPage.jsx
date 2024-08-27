@@ -12,12 +12,12 @@ import spinFirst from './../../assets/spin one/spin_first.png'
 import try_again_icon from './../../assets/spin one/spin_try.png';
 
 
-// 5890deg
+// 5894deg
 const angleArray = [
-  3600,
-  7264,  // 3600 + 32 + 3632 (next step doubled)
-  14600, // 7264 + 60 = 7324, next step doubled
-  29088, // 14524 + 30 = 14554, next step doubled
+  29110, // 14524 + 30 = 14554, next step doubled
+  14664, // 7264 + 60 = 7324, next step doubled
+  7240,  // 3600 + 32 + 3632 (next step doubled)
+  3596,
 ];
 
 export default function SpinTwoPage({data,updateData}) {
@@ -69,7 +69,7 @@ const navigate = useNavigate();
         console.log('is win true');
         if(randomWin==spinLeft){
           console.log('confirm win');
-          setRotaion(5888);
+          setRotaion(5894);
          handleSpinScore(5);
           // return
         }else{
@@ -186,11 +186,11 @@ const navigate = useNavigate();
 
         {/* button div */}
 
-        <div className={`flex-col-center ${styles.buttonDiv}`}>
-          <button className={`flex-row-center`} onClick={spinTheWheel} disabled={isSpin ? true : false}>
+        {/* <div className={`flex-col-center ${styles.buttonDiv}`}> */}
+          <button className={`flex-row-center btn ${styles.spinBtn}`} onClick={spinTheWheel} disabled={isSpin ? true : false}>
             {generateButtonName()}
             </button>
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

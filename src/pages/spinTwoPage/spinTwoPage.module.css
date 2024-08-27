@@ -2,9 +2,9 @@
   border: 1px solid black;
   width: 100%;
   height: 100dvh;
-  background: url('../../assets/blue-bg.png');
+  background: url('../../assets/blue-bg.png') center / cover no-repeat;
   /* gap: 5vh; */
-
+  justify-content: flex-start !important;
 
   .wheelWrapper{
     width: 100%;
@@ -26,6 +26,7 @@
       .pointsTxt {
         position: absolute;
         right: 3%;
+        top: 29%;
         color: #fff;
         font-weight: 600;
         font-size: 3vh;
@@ -68,21 +69,16 @@
     }
   }
   }
-  .buttonDiv{
-    width: 100%;
-    height: auto;
     /* border: 2px solid red; */
-    button{
+    .spinBtn{
       /* width: 39vw; */
-      padding: 2vw 4vw;
-      font-size: 5vw;
-      border-radius: 9vw;
-      background-color: #000;
-      color: #fff;
+      width: 24vh !important;
+      padding: 1vh;
       gap: 2vw;
       img{
-      width: 6vw;  
+      width: 7vw;  
+      height: auto;
       }
     }
-  }
+  
 }
