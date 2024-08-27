@@ -15,6 +15,14 @@ import homePageArr from "./utils/homePage";
 export default function App() {
   const [homeData, setHomeData] = useState(homePageArr);
   const [totalScore, setTotalScore] = useState(0);
+  const [isAllGamePlayed, setIsAllGamePlayed] = useState(false);
+
+  // game restart function
+  const restartGame = () => {
+    setHomeData(homePageArr);
+    setTotalScore(0);
+    setIsAllGamePlayed(false);
+  };
 
   // update a specific game object in homeData
   const updateGameData = (index, updatedData) => {
@@ -32,7 +40,13 @@ export default function App() {
         <Route
           path="/"
           element={
-            <HomePage homeData={homeData} setTotalScore={setTotalScore} />
+            <HomePage
+              homeData={homeData}
+              setTotalScore={setTotalScore}
+              isAllGamePlayed={isAllGamePlayed}
+              setIsAllGamePlayed={setIsAllGamePlayed}
+              restartGame={restartGame}
+            />
           }
         />
 
@@ -43,6 +57,7 @@ export default function App() {
             <SpinOnePage
               data={homeData[0]}
               updateData={(updatedData) => updateGameData(0, updatedData)}
+              restartGame={restartGame}
             />
           }
         />
@@ -54,6 +69,7 @@ export default function App() {
             <SpinTwoPage
               data={homeData[1]}
               updateData={(updatedData) => updateGameData(1, updatedData)}
+              restartGame={restartGame}
             />
           }
         />
@@ -65,6 +81,7 @@ export default function App() {
             <JackpotPage
               data={homeData[2]}
               updateData={(updatedData) => updateGameData(2, updatedData)}
+              restartGame={restartGame}
             />
           }
         />
@@ -76,12 +93,18 @@ export default function App() {
             <QuizPage
               data={homeData[3]}
               updateData={(updatedData) => updateGameData(3, updatedData)}
+              restartGame={restartGame}
             />
           }
         />
 
         {/* final page */}
-        <Route path="/final" element={<FinalPage totalScore={totalScore} />} />
+        <Route
+          path="/final"
+          element={
+            <FinalPage totalScore={totalScore} restartGame={restartGame} />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

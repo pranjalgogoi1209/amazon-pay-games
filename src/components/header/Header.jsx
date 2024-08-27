@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./header.module.css";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import logo from "./../../assets/logo.png";
 import payIcon from "./../../assets/header/pay-icon.png";
 import homeHeading from "./../../assets/header/home-heading-img.png";
 
-export default function Header({ title }) {
+export default function Header({ title, restartGame }) {
+  const navigate = useNavigate();
   const location = useLocation();
   return location.pathname === "/" ? (
     <div className={`flex-col-center ${styles.HomeHeader}`}>
@@ -23,7 +25,13 @@ export default function Header({ title }) {
   ) : (
     <div className={`flex-col-center ${styles.GameHeader}`}>
       {/* pay icon */}
-      <div className={`flex-row-center ${styles.payIcon}`}>
+      <div
+        onClick={() => {
+          restartGame();
+          navigate("/");
+        }}
+        className={`flex-row-center ${styles.payIcon}`}
+      >
         <img src={payIcon} alt="pay-icon" />
       </div>
 

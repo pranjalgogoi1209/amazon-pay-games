@@ -7,10 +7,14 @@ import Header from "../../components/header/Header";
 
 import coin from "./../../assets/homePage/coin.png";
 
-export default function HomePage({ homeData, setTotalScore }) {
+export default function HomePage({
+  homeData,
+  setTotalScore,
+  isAllGamePlayed,
+  setIsAllGamePlayed,
+  restartGame,
+}) {
   const navigate = useNavigate();
-
-  const [isAllGamePlayed, setIsAllGamePlayed] = useState(false);
 
   console.log(isAllGamePlayed);
   console.log(homeData);
@@ -35,7 +39,7 @@ export default function HomePage({ homeData, setTotalScore }) {
 
   return (
     <div className={`flex-col-center ${styles.HomePage}`}>
-      <Header title={"home"} />
+      <Header title={"home"} restartGame={restartGame} />
 
       <div className={`flex-row-center ${styles.mainContainer}`}>
         {homeData?.map((item, index) => (

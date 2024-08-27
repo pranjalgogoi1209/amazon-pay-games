@@ -9,7 +9,7 @@ import iconsArr from "../../utils/jackpot";
 import jackpotImg from "./../../assets/jackpotPage/jackpot.png";
 import spriteSheet from "./../../assets/jackpotPage/spritesheet.png";
 
-export default function JackpotPage({ data, updateData }) {
+export default function JackpotPage({ data, updateData, restartGame }) {
   const navigate = useNavigate();
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [randomNumbers, setRandomNumbers] = useState([0, 0, 0]);
@@ -89,7 +89,7 @@ export default function JackpotPage({ data, updateData }) {
 
   return (
     <div className={`flex-col-center ${styles.JackpotPage}`}>
-      <Header title={"jackpot"} />
+      <Header title={"jackpot"} restartGame={restartGame} />
 
       <div className={`flex-row-center ${styles.jackpotWrapper}`}>
         {/* jackpot png */}

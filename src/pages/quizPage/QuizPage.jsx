@@ -9,7 +9,7 @@ import optionBg from "./../../assets/quizPage/option-bg.png";
 import activeOptionBg from "./../../assets/quizPage/active-option-bg.png";
 import pointsBg from "./../../assets/points-bg.png";
 
-export default function QuizPage({ data, updateData }) {
+export default function QuizPage({ data, updateData, restartGame }) {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
   const [activeOptionIndex, setActiveOptionIndex] = useState(null);
@@ -63,7 +63,7 @@ export default function QuizPage({ data, updateData }) {
 
   return (
     <div className={`flex-col-center ${styles.QuizPage}`}>
-      <Header title={"quiz"} />
+      <Header title={"quiz"} restartGame={restartGame} />
 
       <div className={`flex-col-center ${styles.gameWrapper}`}>
         {/* points */}
