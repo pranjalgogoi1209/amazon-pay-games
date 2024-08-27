@@ -88,7 +88,7 @@ export default function JackpotPage({ data, updateData }) {
 
   return (
     <div className={`flex-col-center ${styles.JackpotPage}`}>
-      <Header title={"JACKPOT"} />
+      <Header title={"jackpot"} />
 
       <div className={`flex-row-center ${styles.jackpotWrapper}`}>
         {/* jackpot png */}
