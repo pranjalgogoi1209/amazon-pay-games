@@ -15,6 +15,8 @@ import homePageArr from "./utils/homePage";
 export default function App() {
   const [homeData, setHomeData] = useState(homePageArr);
 
+  console.log(homeData);
+
   // Helper function to update a specific game object in homeData
   const updateGameData = (index, updatedData) => {
     setHomeData((prevData) =>
