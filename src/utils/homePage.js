@@ -17,7 +17,7 @@ const homePageArr = [
     img: jackpot,
     path: "/jackpot",
     points: "",
-    isGameFinished: false,
+    isGameFinished: true,
   },
   {
     img: quiz,
