@@ -8,11 +8,8 @@
 
   .wheelWrapper {
     width: 100%;
-    /* height: auto; */
-    /* height: 70%; */
-    /* justify-content: flex-start !important; */
-    /* border: 2px solid red; */
-    /* justify-content: flex-start !important; */
+    border: 2px solid red;
+    justify-content: flex-start !important;
     position: relative;
     gap: 3vh;
     .pointsContainer {
@@ -33,7 +30,7 @@
       }
     }
     .spinner {
-      /* border: 3px solid black; */
+      border: 3px solid black;
       width: 67%;
       height: 70%;
       gap: 2vh;
