@@ -7,17 +7,12 @@ import iconsArr from "../../utils/jackpot";
 
 import jackpotImg from "./../../assets/jackpotPage/jackpot.png";
 import jackpotLeaver from "./../../assets/jackpotPage/leaver.png";
+import spriteSheet from "./../../assets/jackpotPage/spritesheet.png";
 
 // const iconsArr = ["🍒", "🍋", "🔔", "🍉", "⭐", "7️⃣"];
 
 export default function JackpotPage() {
   const [isGameStarted, setIsGameStarted] = useState(false);
-
-  /* useEffect(() => {
-    setTimeout(() => {
-      setIsGameStarted(false);
-    }, 12000);
-  }, [isGameStarted]); */
 
   const shuffleArray = (arr) => {
     const shuffledArr = [...arr];
@@ -41,12 +36,14 @@ export default function JackpotPage() {
     const symbolContent = [
       ...shuffleArray(iconsArr),
       ...shuffleArray(iconsArr),
+      ...shuffleArray(iconsArr),
+      ...shuffleArray(iconsArr),
     ].map((symbol, idx) => <img src={symbol} alt={`icon ${idx + 1}`} />);
 
     //
     //<div>{iconsArr[ans]}</div>
     // 23
-    symbolContent.splice(23, 0, <img src={iconsArr[ans]} alt="replaceIcon" />);
+    symbolContent.splice(56, 0, <img src={iconsArr[ans]} alt="replaceIcon" />);
     return symbolContent;
   };
 
@@ -67,7 +64,7 @@ export default function JackpotPage() {
             isGameStarted ? styles.leaverPulled : ""
           }`}
         >
-          <img src={jackpotLeaver} alt="jackpot-leaver" />
+          pull leaver
         </div>
 
         {/* jackpot container */}
