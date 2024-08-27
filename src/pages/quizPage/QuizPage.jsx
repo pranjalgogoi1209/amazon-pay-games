@@ -9,7 +9,7 @@ import optionBg from "./../../assets/quizPage/option-bg.png";
 import activeOptionBg from "./../../assets/quizPage/active-option-bg.png";
 import pointsBg from "./../../assets/points-bg.png";
 
-export default function QuizPage() {
+export default function QuizPage({ data, updateData }) {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1);
   const [activeOptionIndex, setActiveOptionIndex] = useState(null);
@@ -50,6 +50,11 @@ export default function QuizPage() {
 
   useEffect(() => {
     if (quizFinished) {
+      // update the points and mark the game as finished
+      updateData({
+        points: quizScore,
+        isGameFinished: true,
+      });
       navigate("/");
     }
   }, [quizFinished, navigate]);
