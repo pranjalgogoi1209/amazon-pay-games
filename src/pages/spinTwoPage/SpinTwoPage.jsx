@@ -4,6 +4,7 @@ import { wheelTwoList } from "../../data/wheelsList";
 import spinPointer from "../../assets/spin one/pointer.png";
 import spinnerBase from "../../assets/spin one/stand.png";
 import btnIcon from '../../assets/spin one/btnicon.png'
+import { useNavigate } from "react-router-dom";
 
 // winning angle 5607deg
 const angleArray = [
@@ -24,6 +25,7 @@ export default function SpinTwoPage() {
   const [isWin,setIsWin]=useState('');
 
   console.log(randomWin,isWin,spinLeft,'random win is win and spin left')
+  const navigate = useNavigate();
 
   const generateButtonName = () => {
     const btn = <img src={btnIcon} alt="icon"  />;
@@ -34,15 +36,16 @@ export default function SpinTwoPage() {
   };
 
   const spinTheWheel = () => {
-    
+     
+    if(isSpin || spinLeft==0) return
+
     setIsSpin(true);
-    console.log('clicked');
+    console.log('clicked',spinLeft);
     if(isWin=='True'){
         console.log('is win true');
         if(randomWin==spinLeft){
           console.log('confirm win');
           setRotaion(5890);
-          
           setTimeout(()=>{
             navigate('/')
           },8000)
@@ -59,6 +62,7 @@ export default function SpinTwoPage() {
         console.log('no spin left')
       }
     }
+
     setTimeout(()=>{
       setIsSpin(false);
     },6000);
@@ -67,9 +71,9 @@ export default function SpinTwoPage() {
   return (
     <div className={`flex-col-center ${styles.SpinOnePage}`}>
       {/* heading */}
-      <div className={`flex-col-center ${styles.heading}`}>
+      {/* <div className={`flex-col-center ${styles.heading}`}>
         <h2>Spin & Win</h2>
-      </div>
+      </div> */}
       {/* spin the wheel */}
 
       {/* wheel wrapper */}

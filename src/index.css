@@ -17,6 +17,11 @@ body {
   /* background: url("./assets/bg.png") center / cover no-repeat; */
   height: 100dvh;
   overflow-x: hidden;
+  /* border: 2px solid blue; */
+}
+
+h1 {
+  font-size: 6vh;
 }
 
 a {

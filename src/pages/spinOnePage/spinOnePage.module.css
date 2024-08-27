@@ -14,15 +14,15 @@
   .wheelWrapper{
     width: 70%;
     /* height: auto; */
-    height: 70%;
+    /* height: 70%; */
     /* justify-content: flex-start !important; */
-    border: 2px solid red;
+    /* border: 2px solid red; */
     /* justify-content: flex-start !important; */
     position: relative;
-     gap: 1vh;
+     gap: 3vh;
     .spinner{
-      border: 3px solid black;
-      height: 90%;
+      /* border: 3px solid black; */
+      height: 70%;
       gap: 2vh;
     .wheelContainer{
         width: 100%;

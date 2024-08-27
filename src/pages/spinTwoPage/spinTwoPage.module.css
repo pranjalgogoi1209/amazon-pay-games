@@ -18,7 +18,7 @@
       /* justify-content: flex-start !important; */
       /* border: 2px solid red; */
       position: relative;
-       gap: 1vh;
+       gap: 3vh;
       .spinner{
         /* border: 2px solid black; */
         height: 70%;

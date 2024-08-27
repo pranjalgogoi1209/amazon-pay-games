@@ -4,6 +4,7 @@ import { wheelOneList } from "../../data/wheelsList";
 import spinPointer from "../../assets/spin one/pointer.png";
 import spinnerBase from "../../assets/spin one/stand.png";
 import btnIcon from '../../assets/spin one/btnicon.png'
+import spin_button from '../../assets/spin one/spin_btn.png'
 import { useNavigate } from "react-router-dom";
 
 
@@ -12,7 +13,7 @@ const angleArray = [
   3600,
   7264,  // 3600 + 32 + 3632 (next step doubled)
   14600, // 7264 + 60 = 7324, next step doubled
-  29088 , // 14524 + 30 = 14554, next step doubled
+  29088, // 14524 + 30 = 14554, next step doubled
 ];
 
 export default function SpinOnePage() {
@@ -22,16 +23,17 @@ export default function SpinOnePage() {
     Math.floor(Math.random() * wheelOneList.length)
   );
   const [randomWin,setRandomWin]=useState(Math.floor(Math.random()*3)+1)
-  const [isWin,setIsWin]=useState('True');
+  const [isWin,setIsWin]=useState('');
 
-  console.log(randomWin,spinLeft,typeof isWin,'random number spin left ');
+  console.log(randomWin,spinLeft, isWin,'random_number spin_left winstatus ');
   
 
   const [rotation, setRotaion] = useState(0);
 
 
   const generateButtonName = () => {
-    const btn = <img src={btnIcon} alt="icon" style={{ marginRight: '8px' }} />;
+    const btn = <img src={btnIcon} alt="icon"  />;
+    const spinBTn = <img src={spin_button} alt="button" />
     if (isSpin) return "Spinning...";
     if (spinLeft === 3) return "Spin Now";
     if (spinLeft > 0) return <>{btn}Try Again</>;
@@ -46,6 +48,7 @@ const navigate = useNavigate();
   }
 
   const spinTheWheel = () => {
+    
     if(isSpin || spinLeft==0) return
 
     setIsSpin(true);
@@ -55,7 +58,6 @@ const navigate = useNavigate();
         if(randomWin==spinLeft){
           console.log('confirm win');
           setRotaion(5890);
-          
           setTimeout(()=>{
             navigate('/')
           },8000)

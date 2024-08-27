@@ -1,6 +1,111 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import "./jackpot.css";
 import styles from "./jackpotPage.module.css";
 
+import Header from "../../components/header/Header";
+import iconsArr from "../../utils/jackpot";
+
+import jackpotImg from "./../../assets/jackpotPage/jackpot.png";
+import jackpotLeaver from "./../../assets/jackpotPage/leaver.png";
+
+// const iconsArr = ["🍒", "🍋", "🔔", "🍉", "⭐", "7️⃣"];
+
 export default function JackpotPage() {
-  return <div className={styles.JackpotPage}>JackpotPage</div>;
+  const [isGameStarted, setIsGameStarted] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsGameStarted(false);
+    }, 12000);
+  }, [isGameStarted]);
+
+  const shuffleArray = (arr) => {
+    const shuffledArr = [...arr];
+
+    arr.forEach((_ele, index) => {
+      const randomIndex = Math.floor(Math.random() * index);
+      [shuffledArr[index], shuffledArr[randomIndex]] = [
+        shuffledArr[randomIndex],
+        shuffledArr[index],
+      ];
+    });
+
+    return shuffledArr;
+  };
+
+  //
+
+  //<div>{symbol}</div>
+
+  const getSymbolContent = (ans) => {
+    const symbolContent = [
+      ...shuffleArray(iconsArr),
+      ...shuffleArray(iconsArr),
+    ].map((symbol, idx) => <img src={symbol} alt={`icon ${idx + 1}`} />);
+
+    //
+    //<div>{iconsArr[ans]}</div>
+
+    symbolContent.splice(13, 0, <img src={iconsArr[ans]} alt="replaceIcon" />);
+    return symbolContent;
+  };
+
+  return (
+    <div className={`flex-col-center ${styles.JackpotPage}`}>
+      <Header title={"JACKPOT"} />
+
+      <div className={`flex-row-center ${styles.jackpotWrapper}`}>
+        {/* jackpot png */}
+        <div className={`flex-row-center ${styles.jackpotImgContainer}`}>
+          <img src={jackpotImg} alt="jackpot" />
+        </div>
+
+        {/* jackpot leaver */}
+        <div
+          onClick={() => setIsGameStarted(true)}
+          className={`flex-row-center ${styles.jackpotLeaver} ${
+            isGameStarted ? styles.leaverPulled : ""
+          }`}
+        >
+          <img src={jackpotLeaver} alt="jackpot-leaver" />
+        </div>
+
+        <div
+          className={`flex-row-center ${
+            isGameStarted ? "cou__content--animate" : ""
+          } ${styles.jackpotContainer}`}
+        >
+          <div
+            className={`flex-row-center cou__content__digit ${styles.singleIcon}`}
+          >
+            <div
+              className={`cou__item cou__item--3 cou__item--digit ${styles.imgContainer}`}
+            >
+              {getSymbolContent(2)}
+            </div>
+          </div>
+
+          <div
+            className={`flex-row-center cou__content__digit ${styles.singleIcon}`}
+          >
+            <div
+              className={`cou__item cou__item--3 cou__item--digit ${styles.imgContainer}`}
+            >
+              {getSymbolContent(2)}
+            </div>
+          </div>
+
+          <div
+            className={`flex-row-center cou__content__digit ${styles.singleIcon}`}
+          >
+            <div
+              className={`cou__item cou__item--3 cou__item--digit ${styles.imgContainer}`}
+            >
+              {getSymbolContent(2)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

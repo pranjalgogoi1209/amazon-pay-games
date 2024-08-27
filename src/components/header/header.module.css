@@ -1,0 +1,9 @@
+.Header {
+  border: 1px solid red;
+  width: 100%;
+  height: 32vh;
+  gap: 8vh;
+  .logoContainer {
+    height: 6vh;
+  }
+}
