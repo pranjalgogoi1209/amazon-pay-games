@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import pointsBg from "./../../assets/points-bg.png";
 
-// winning angle 5783
+// winning angle 5640
 const angleArray = [
   29088, // 14524 + 30 = 14554, next step doubled
   14700, // 7264 + 60 = 7324, next step doubled
@@ -54,7 +54,7 @@ export default function SpinOnePage() {
         console.log('is win true');
         if(randomWin==spinLeft){
           console.log('confirm win');
-          setRotaion(5783);
+          setRotaion(5640);
           handleSpinScore(5);
           // return
         }else{
@@ -76,7 +76,7 @@ export default function SpinOnePage() {
       setIsSpin(false);
     },6000);
   };
-  
+
   useEffect(()=>{
     const getWin=async()=>{
       try {
