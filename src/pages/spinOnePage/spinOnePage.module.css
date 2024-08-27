@@ -8,7 +8,7 @@
 
   .wheelWrapper {
     width: 100%;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     justify-content: flex-start !important;
     position: relative;
     gap: 3vh;
@@ -30,7 +30,7 @@
       }
     }
     .spinner {
-      border: 3px solid black;
+      /* border: 3px solid black; */
       width: 67%;
       height: 70%;
       gap: 2vh;
@@ -59,7 +59,7 @@
       }
       .spinnerBase {
         /* border: 2px solid red; */
-        width: 65%;
+        width: 70%;
         z-index: 1;
         position: relative;
         bottom: 13vw;
@@ -68,11 +68,11 @@
   }
 
   .spinBtn {
-    width: 24vh !important;
+    width: 26vh !important;
     gap: 2vw;
     padding: 1vh;
     img {
-      width: 7vw;
+      width: 6vw;
       height: auto;
     }
   }

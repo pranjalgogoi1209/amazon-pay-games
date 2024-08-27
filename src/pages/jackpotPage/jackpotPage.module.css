@@ -3,14 +3,14 @@
   height: 100dvh;
   background: url("./../../assets/yellow-bg.jpg") center / cover no-repeat;
   justify-content: flex-start !important;
-
+  overflow: hidden;
   .jackpotWrapper {
-    border: 1px solid orangered;
+    /* border: 1px solid orangered; */
     width: 100%;
     position: relative;
     align-items: flex-start !important;
     .jackpotImgContainer {
-      border: 1px solid green;
+      /* border: 1px solid green; */
       height: 55vh;
     }
 

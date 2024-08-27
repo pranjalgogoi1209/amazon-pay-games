@@ -12,7 +12,7 @@ import spinFirst from './../../assets/spin one/spin_first.png'
 import try_again_icon from './../../assets/spin one/spin_try.png';
 
 
-// 5894deg
+// 15250
 const angleArray = [
   29110, // 14524 + 30 = 14554, next step doubled
   14664, // 7264 + 60 = 7324, next step doubled
@@ -69,7 +69,7 @@ const navigate = useNavigate();
         console.log('is win true');
         if(randomWin==spinLeft){
           console.log('confirm win');
-          setRotaion(5894);
+          setRotaion(15250);
          handleSpinScore(5);
           // return
         }else{
@@ -186,11 +186,11 @@ const navigate = useNavigate();
 
         {/* button div */}
 
-        {/* <div className={`flex-col-center ${styles.buttonDiv}`}> */}
+        <div className={`flex-col-center ${styles.buttonDiv}`}>
           <button className={`flex-row-center btn ${styles.spinBtn}`} onClick={spinTheWheel} disabled={isSpin ? true : false}>
             {generateButtonName()}
             </button>
-        {/* </div> */}
+        </div>
       </div>
     </div>
   );

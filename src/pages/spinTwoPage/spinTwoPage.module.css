@@ -2,20 +2,15 @@
   border: 1px solid black;
   width: 100%;
   height: 100dvh;
-  background: url('../../assets/blue-bg.png') center / cover no-repeat;
-  /* gap: 5vh; */
+  background: url("../../assets/blue-bg.png") center / cover no-repeat;
   justify-content: flex-start !important;
 
-  .wheelWrapper{
+  .wheelWrapper {
     width: 100%;
-    /* height: auto; */
-    /* height: 70%; */
-    /* justify-content: flex-start !important; */
-    /* border: 2px solid red; */
-    /* justify-content: flex-start !important; */
     position: relative;
-     gap: 3vh;
-     .pointsContainer {
+    gap: 5vh;
+    justify-content: flex-start !important;
+    .pointsContainer {
       /* border: 1px solid red; */
       width: 100%;
       position: relative;
@@ -32,53 +27,56 @@
         font-size: 3vh;
       }
     }
-    .spinner{
+    .spinner {
       /* border: 3px solid black; */
       width: 67%;
       height: 70%;
       gap: 2vh;
-    .wheelContainer{
+      .wheelContainer {
         width: 100%;
         /* border: 2px solid red; */
         /* height: auto; */
         position: relative;
         /* top: 0vw; */
         z-index: 2;
-        .wheel{
-            width: 100%;
-            /* height: 100%; */
-            /* border: 10px solid red; */
-            border-radius: 50%;
-            /* animation: rotation 5s ease-in-out; */
+        .wheel {
+          width: 100%;
+          /* height: 100%; */
+          /* border: 10px solid red; */
+          border-radius: 50%;
+          /* animation: rotation 5s ease-in-out; */
         }
-        .spinPointer{
-            width: 13vw;
-            /* border: 3px solid green; */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
+        .spinPointer {
+          width: 13vw;
+          /* border: 3px solid green; */
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
-    }
-    .spinnerBase{
+      }
+      .spinnerBase {
         /* border: 2px solid red; */
-        width: 65%;
+        width: 70%;
         z-index: 1;
         position: relative;
         bottom: 13vw;
-    }
-  }
-  }
-    /* border: 2px solid red; */
-    .spinBtn{
-      /* width: 39vw; */
-      width: 24vh !important;
-      padding: 1vh;
-      gap: 2vw;
-      img{
-      width: 7vw;  
-      height: auto;
       }
     }
-  
+  }
+  /* border: 2px solid red; */
+  .buttonDiv {
+    position: absolute;
+    bottom: -7vw;
+    .spinBtn {
+      width: 26vh !important;
+      gap: 2vw;
+      padding: 1vh;
+      margin-bottom: 2vh;
+      img {
+        width: 6vw;
+        height: auto;
+      }
+    }
+  }
 }
