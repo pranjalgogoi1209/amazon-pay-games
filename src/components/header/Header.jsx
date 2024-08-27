@@ -38,7 +38,7 @@ export default function Header({ title, restartGame }) {
       {/* game heading */}
       <div className={`flex-row-center ${styles.gameHeading}`}>
         <img
-          src={`/src/assets/header/${title}-game-img.png`}
+          src={`/${title}-game-img.png`}
           alt="game-heading"
         />
       </div>
