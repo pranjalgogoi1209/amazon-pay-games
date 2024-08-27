@@ -9,7 +9,12 @@ import iconsArr from "../../utils/jackpot";
 import jackpotImg from "./../../assets/jackpotPage/jackpot.png";
 import spriteSheet from "./../../assets/jackpotPage/spritesheet.png";
 
-export default function JackpotPage({ data, updateData, restartGame }) {
+export default function JackpotPage({
+  data,
+  updateData,
+  restartGame,
+  isUserWin,
+}) {
   const navigate = useNavigate();
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [randomNumbers, setRandomNumbers] = useState([0, 0, 0]);
@@ -42,13 +47,21 @@ export default function JackpotPage({ data, updateData, restartGame }) {
     return symbolContent;
   };
 
-  // generate 3 random numbers between 0 and 12
+  // generate 3 random numbers
   const generateRandomNumbers = () => {
-    const random1 = Math.floor(Math.random() * 13);
-    const random2 = Math.floor(Math.random() * 13);
-    const random3 = Math.floor(Math.random() * 13);
-    setRandomNumbers([random1, random2, random3]);
+    let random1, random2, random3;
 
+    if (isUserWin) {
+      // If isWin is true, make all numbers match
+      random1 = random2 = random3 = Math.floor(Math.random() * 13);
+    } else {
+      // Otherwise, generate random numbers normally
+      random1 = Math.floor(Math.random() * 13);
+      random2 = Math.floor(Math.random() * 13);
+      random3 = Math.floor(Math.random() * 13);
+    }
+
+    setRandomNumbers([random1, random2, random3]);
     return [random1, random2, random3];
   };
 

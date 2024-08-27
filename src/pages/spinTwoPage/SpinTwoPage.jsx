@@ -14,12 +14,17 @@ import try_again_icon from "./../../assets/spin one/spin_try.png";
 // 15250
 const angleArray = [
   29110, // 14524 + 30 = 14554, next step doubled
-  14664, // 7264 + 60 = 7324, next step doubled
+  16910, // 7264 + 60 = 7324, next step doubled
   7240, // 3600 + 32 + 3632 (next step doubled)
   3596,
 ];
 
-export default function SpinTwoPage({ data, updateData, restartGame }) {
+export default function SpinTwoPage({
+  data,
+  updateData,
+  restartGame,
+  isUserWin,
+}) {
   const [isSpin, setIsSpin] = useState(false);
   const [spinLeft, setSpinLeft] = useState(3);
   const [randomNumber, setRandomNumber] = useState(
@@ -61,12 +66,13 @@ export default function SpinTwoPage({ data, updateData, restartGame }) {
 
     setIsSpin(true);
     console.log("clicked", spinLeft);
-    if (isWin == "True") {
+    if (isUserWin) {
       console.log("is win true");
       if (randomWin == spinLeft) {
         console.log("confirm win");
         setRotaion(15250);
         handleSpinScore(5);
+        setSpinLeft((prev) => prev - 1);
         // return
       } else {
         setRotaion(angleArray[spinLeft]);
@@ -87,26 +93,6 @@ export default function SpinTwoPage({ data, updateData, restartGame }) {
       setIsSpin(false);
     }, 6000);
   };
-
-  useEffect(() => {
-    const getWin = async () => {
-      try {
-        const response = await fetch(
-          `https://analytiq4.com/amazon-pay/spin-the-wheel/fetch.php`
-        )
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            console.log(data);
-            setIsWin(data.Win);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    // getWin();
-  }, []);
 
   useEffect(() => {
     if (isSpin) {

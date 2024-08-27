@@ -12,7 +12,7 @@ export default function FinalPage({ totalScore, restartGame }) {
   const [isConfetti, setIsConfetti] = useState(false);
 
   useEffect(() => {
-    if (totalScore >= 15) {
+    if (totalScore > 15) {
       setIsConfetti(true);
       console.log("conffetti");
     }

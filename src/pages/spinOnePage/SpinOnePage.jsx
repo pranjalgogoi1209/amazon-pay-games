@@ -18,7 +18,12 @@ const angleArray = [
   3960,
 ];
 
-export default function SpinOnePage({ data, updateData, restartGame }) {
+export default function SpinOnePage({
+  data,
+  updateData,
+  restartGame,
+  isUserWin,
+}) {
   const [isSpin, setIsSpin] = useState(false);
   const [spinLeft, setSpinLeft] = useState(3);
   const [randomNumber, setRandomNumber] = useState(
@@ -52,12 +57,13 @@ export default function SpinOnePage({ data, updateData, restartGame }) {
 
     setIsSpin(true);
     console.log("clicked", spinLeft);
-    if (isWin == "True") {
+    if (isUserWin) {
       console.log("is win true");
       if (randomWin == spinLeft) {
         console.log("confirm win");
         setRotaion(17870);
         handleSpinScore(5);
+        setSpinLeft((prev) => prev - 1);
         // return
       } else {
         setRotaion(angleArray[spinLeft]);
@@ -79,25 +85,6 @@ export default function SpinOnePage({ data, updateData, restartGame }) {
     }, 6000);
   };
 
-  useEffect(() => {
-    const getWin = async () => {
-      try {
-        const response = await fetch(
-          `https://analytiq4.com/amazon-pay/spin-the-wheel/fetch.php`
-        )
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            console.log(data);
-            setIsWin(data.Win);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    // getWin();
-  }, []);
   useEffect(() => {
     if (isSpin) {
       const randomId = Math.floor(Math.random() * wheelTwoList.length);

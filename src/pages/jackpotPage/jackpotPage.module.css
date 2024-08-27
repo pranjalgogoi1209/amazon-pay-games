@@ -11,15 +11,15 @@
     align-items: flex-start !important;
     .jackpotImgContainer {
       /* border: 1px solid green; */
-      height: 55vh;
+      height: 52vh;
     }
 
     .jackpotLeaver {
       /* border: 1px solid black; */
       position: absolute;
-      top: 28.5%;
-      right: -8.7%;
-      width: 13vh;
+      top: 33%;
+      right: -3%;
+      width: 10vh;
       .spriteSheet {
         /* border: 1px solid blue; */
         width: 100%;
@@ -32,14 +32,14 @@
       position: absolute;
       /* top: 37.8%; */
       top: 46.8%;
-      gap: 2vh;
+      gap: 2.6vh;
       .singleIcon {
         /* border: 2px solid red; */
         overflow: hidden;
         /* width: 7vh; */
-        width: 12vw;
+        width: 11vw;
         /* height: 9.2vh; */
-        height: 9vh;
+        height: 8vh;
         aspect-ratio: 1;
         .imgContainer {
           /* border: 2px solid red; */
@@ -101,16 +101,16 @@
     transform: translateY(0);
   }
   70% {
-    transform: translateY(-5340%);
+    transform: translateY(-5338%);
   }
   85% {
-    transform: translateY(-5325%);
+    transform: translateY(-5324%);
   }
   95% {
-    transform: translateY(-5330%);
+    transform: translateY(-5332%);
   }
   100% {
-    transform: translateY(-5326%);
+    transform: translateY(-5330%);
   }
 }
 

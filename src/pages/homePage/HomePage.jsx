@@ -20,9 +20,11 @@ export default function HomePage({
   console.log(homeData);
 
   useEffect(() => {
-    if (isAllGamePlayed) {
-      navigate("/final");
-    }
+    setTimeout(() => {
+      if (isAllGamePlayed) {
+        navigate("/final");
+      }
+    }, 2000);
   }, [isAllGamePlayed]);
 
   // sum of all game points and check if all games are played

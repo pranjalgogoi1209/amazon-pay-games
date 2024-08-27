@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import {
@@ -16,12 +17,38 @@ export default function App() {
   const [homeData, setHomeData] = useState(homePageArr);
   const [totalScore, setTotalScore] = useState(0);
   const [isAllGamePlayed, setIsAllGamePlayed] = useState(false);
+  const [gameRestart, setGameRestart] = useState(false);
+  const [isUserWin, setIsUserWin] = useState(false);
+
+  console.log("is user win", isUserWin);
+
+  // api calling
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://analytiq4.com/amazon-pay/spin-the-wheel/fetch.php"
+        );
+        if (response.data.Win === "True") {
+          setIsUserWin(true);
+        } else {
+          setIsUserWin(false);
+        }
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [gameRestart]);
 
   // game restart function
   const restartGame = () => {
     setHomeData(homePageArr);
     setTotalScore(0);
     setIsAllGamePlayed(false);
+    setGameRestart((prev) => !prev);
   };
 
   // update a specific game object in homeData
@@ -58,6 +85,7 @@ export default function App() {
               data={homeData[0]}
               updateData={(updatedData) => updateGameData(0, updatedData)}
               restartGame={restartGame}
+              isUserWin={isUserWin}
             />
           }
         />
@@ -70,6 +98,7 @@ export default function App() {
               data={homeData[1]}
               updateData={(updatedData) => updateGameData(1, updatedData)}
               restartGame={restartGame}
+              isUserWin={isUserWin}
             />
           }
         />
@@ -82,6 +111,7 @@ export default function App() {
               data={homeData[2]}
               updateData={(updatedData) => updateGameData(2, updatedData)}
               restartGame={restartGame}
+              isUserWin={isUserWin}
             />
           }
         />
