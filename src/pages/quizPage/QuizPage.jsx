@@ -7,7 +7,7 @@ import Header from "../../components/header/Header";
 
 import optionBg from "./../../assets/quizPage/option-bg.png";
 import activeOptionBg from "./../../assets/quizPage/active-option-bg.png";
-import pointsBg from "./../../assets/quizPage/points-bg.png";
+import pointsBg from "./../../assets/points-bg.png";
 
 export default function QuizPage() {
   const navigate = useNavigate();

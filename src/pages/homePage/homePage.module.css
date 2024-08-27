@@ -1,3 +1,35 @@
 .HomePage {
-  border: 1px solid black;
+  width: 100%;
+  height: 100dvh;
+  background: url("./../../assets/blue-bg.png") center / cover;
+  justify-content: flex-start !important;
+  gap: 4vh;
+
+  .mainContainer {
+    border: 1px solid red;
+    flex-wrap: wrap;
+    gap: 5vw;
+    .singleGameContainer {
+      position: relative;
+      .imgContainer {
+        /* border: 1px solid red; */
+        width: 44vw;
+        border-radius: 3vw;
+        img {
+          border-radius: 3vw;
+        }
+      }
+      .gameFinishedContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(51, 62, 71, 0.7);
+        border-radius: 3vw;
+      }
+    }
+  }
 }

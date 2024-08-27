@@ -1,5 +1,18 @@
-.Header {
-  /* border: 1px solid blue; */
+.HomeHeader {
+  border: 1px solid blue;
+  width: 100%;
+  gap: 3vh;
+  padding: 2vh;
+  .logo {
+    height: 4vh;
+  }
+  .homeHeading {
+    height: 8vh;
+  }
+}
+
+.GameHeader {
+  border: 1px solid blue;
   width: 100%;
   /* height: 32vh; */
   padding: 1vh;
