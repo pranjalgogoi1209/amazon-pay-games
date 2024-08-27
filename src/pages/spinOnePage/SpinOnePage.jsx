@@ -1,54 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "./spinOnePage.module.css";
-import { wheelOneList } from "../../data/wheelsList";
+import { wheelTwoList } from "../../data/wheelsList";
 import spinPointer from "../../assets/spin one/pointer.png";
 import spinnerBase from "../../assets/spin one/stand.png";
 import btnIcon from '../../assets/spin one/btnicon.png'
-import spin_button from '../../assets/spin one/spin_btn.png'
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/header/Header";
 
-
-// 5890deg
+// winning angle 5607deg
 const angleArray = [
-  3600,
-  7264,  // 3600 + 32 + 3632 (next step doubled)
-  14600, // 7264 + 60 = 7324, next step doubled
   29088, // 14524 + 30 = 14554, next step doubled
+  14700, // 7264 + 60 = 7324, next step doubled
+  7464,  // 3600 + 32 + 3632 (next step doubled)
+3900,
 ];
 
 export default function SpinOnePage() {
-  const [isSpin, setIsSpin] = useState(false);
-  const [spinLeft,setSpinLeft]=useState(3);
+    const [isSpin, setIsSpin] = useState(false);
+    const [spinLeft,setSpinLeft]=useState(3);
   const [randomNumber, setRandomNumber] = useState(
-    Math.floor(Math.random() * wheelOneList.length)
+    Math.floor(Math.random() * wheelTwoList.length)
   );
-  const [randomWin,setRandomWin]=useState(Math.floor(Math.random()*3)+1)
+  const [rotation, setRotaion] = useState(0);
+  const [randomWin,setRandomWin] = useState(Math.floor(Math.random()*3)+1);
   const [isWin,setIsWin]=useState('');
 
-  console.log(randomWin,spinLeft, isWin,'random_number spin_left winstatus ');
-  
-
-  const [rotation, setRotaion] = useState(0);
-
+  console.log(randomWin,isWin,spinLeft,'random win is win and spin left')
+  const navigate = useNavigate();
 
   const generateButtonName = () => {
     const btn = <img src={btnIcon} alt="icon"  />;
-    const spinBTn = <img src={spin_button} alt="button" />
     if (isSpin) return "Spinning...";
     if (spinLeft === 3) return "Spin Now";
     if (spinLeft > 0) return <>{btn}Try Again</>;
     return "No Spins Left";
-};
-
-const navigate = useNavigate();
-
-  const generateIcon=()=>{
-    if(spinLeft==3) return;
-    if(spinLeft>0) return btnIcon;
-  }
+  };
 
   const spinTheWheel = () => {
-    
+     
     if(isSpin || spinLeft==0) return
 
     setIsSpin(true);
@@ -78,9 +67,7 @@ const navigate = useNavigate();
     setTimeout(()=>{
       setIsSpin(false);
     },6000);
-    
   };
-
   useEffect(()=>{
     const getWin=async()=>{
       try {
@@ -98,7 +85,6 @@ const navigate = useNavigate();
     // getWin();
 
   },[]);
-
   useEffect(()=>{
     if(isSpin){
       const randomId = Math.floor(Math.random() * wheelOneList.length)
@@ -116,7 +102,10 @@ const navigate = useNavigate();
   return (
     <div className={`flex-col-center ${styles.SpinOnePage}`}>
       {/* heading */}
-   
+      <Header title={'spin-one'} />
+      {/* <div className={`flex-col-center ${styles.heading}`}>
+        <h2>Spin & Win</h2>
+      </div> */}
       {/* spin the wheel */}
 
       {/* wheel wrapper */}
@@ -138,7 +127,7 @@ const navigate = useNavigate();
             }}
           >
             {/* {(totalSpin==10 && !isSpin) && <Confetti />} */}
-            <img src={wheelOneList[randomNumber]} alt="wheel" />
+            <img src={wheelTwoList[randomNumber]} alt="wheel" />
           </div>
 
           {/* pointer */}
@@ -159,9 +148,7 @@ const navigate = useNavigate();
         {/* button div */}
 
         <div className={`flex-col-center ${styles.buttonDiv}`}>
-          <button className={`flex-row-center`} onClick={spinTheWheel} disabled={isSpin ? true : false}>
-            {generateButtonName()}
-            </button>
+          <button className={`flex-row-center `} onClick={spinTheWheel}>{generateButtonName()}</button>
         </div>
       </div>
     </div>
