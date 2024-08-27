@@ -10,7 +10,7 @@
     /* height: auto; */
     /* height: 70%; */
     /* justify-content: flex-start !important; */
-    /* border: 2px solid red; */
+    border: 2px solid red;
     /* justify-content: flex-start !important; */
     position: relative;
      gap: 3vh;
@@ -71,6 +71,8 @@
     width: 100%;
     height: auto;
     /* border: 2px solid red; */
+    /* position: absolute;
+    bottom: 0; */
     button{
       /* width: 39vw; */
       padding: 2vw 4vw;

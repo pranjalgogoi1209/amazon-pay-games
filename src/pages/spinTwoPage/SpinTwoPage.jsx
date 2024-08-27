@@ -8,6 +8,8 @@ import spin_button from '../../assets/spin one/spin_btn.png'
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import pointsBg from "./../../assets/points-bg.png";
+import spinFirst from './../../assets/spin one/spin_first.png'
+import try_again_icon from './../../assets/spin one/spin_try.png';
 
 
 // 5890deg
@@ -18,7 +20,7 @@ const angleArray = [
   29088, // 14524 + 30 = 14554, next step doubled
 ];
 
-export default function SpinTwoPage() {
+export default function SpinTwoPage({data,updateData}) {
   const [isSpin, setIsSpin] = useState(false);
   const [spinLeft,setSpinLeft]=useState(3);
   const [randomNumber, setRandomNumber] = useState(
@@ -35,10 +37,11 @@ export default function SpinTwoPage() {
 
 
   const generateButtonName = () => {
-    const btn = <img src={btnIcon} alt="icon"  />;
-    const spinBTn = <img src={spin_button} alt="button" />
+    const btn = <img src={try_again_icon} alt="icon"  />;
+    const spinBTn = <img src={spinFirst} alt="button" />
+
     if (isSpin) return "Spinning...";
-    if (spinLeft === 3) return "Spin Now";
+    if (spinLeft === 3) return <>{spinBTn} Spin Now</>;
     if (spinLeft > 0) return <>{btn}Try Again</>;
     return "No Spins Left";
 };
@@ -115,6 +118,10 @@ const navigate = useNavigate();
     }
     if(spinLeft==0 && !isSpin){
       console.log('left nothing')
+      updateData({
+        points:spinScore,
+        isGameFinished:true
+      })
       setTimeout(()=>{
        navigate('/');
       },2000);
