@@ -15,23 +15,6 @@ import homePageArr from "./utils/homePage";
 export default function App() {
   const [homeData, setHomeData] = useState(homePageArr);
   const [totalScore, setTotalScore] = useState(0);
-  const [isAllGamePlayed, setIsAllGamePlayed] = useState(false);
-
-  console.log(totalScore);
-  console.log(isAllGamePlayed);
-  console.log(homeData);
-
-  // sum of all game points and check if all games are played
-  useEffect(() => {
-    const sum = homeData.reduce(
-      (acc, obj) => acc + (Number(obj.points) || 0),
-      0
-    );
-    setTotalScore(sum);
-
-    const allPlayed = homeData.every((game) => game.isGameFinished);
-    setIsAllGamePlayed(allPlayed);
-  }, [homeData]);
 
   // update a specific game object in homeData
   const updateGameData = (index, updatedData) => {
@@ -46,7 +29,12 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* home page */}
-        <Route path="/" element={<HomePage homeData={homeData} />} />
+        <Route
+          path="/"
+          element={
+            <HomePage homeData={homeData} setTotalScore={setTotalScore} />
+          }
+        />
 
         {/* spin one page */}
         <Route
@@ -93,7 +81,7 @@ export default function App() {
         />
 
         {/* final page */}
-        <Route path="/final" element={<FinalPage />} />
+        <Route path="/final" element={<FinalPage totalScore={totalScore} />} />
       </Routes>
     </BrowserRouter>
   );

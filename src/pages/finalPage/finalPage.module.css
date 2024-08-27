@@ -1,3 +1,21 @@
 .FinalPage {
   border: 1px solid black;
+  width: 100%;
+  height: 100dvh;
+  background: url("./../../assets/blue-bg.png") center / cover;
+  justify-content: flex-start !important;
+  padding: 1vh;
+  .payIcon {
+    height: 8vh;
+    align-self: flex-start;
+  }
+  .resultContainer {
+    margin: auto;
+    height: 30vh;
+    border: 0.5vw solid #212121;
+    border-radius: 3vw;
+    img {
+      border-radius: 3vw;
+    }
+  }
 }
