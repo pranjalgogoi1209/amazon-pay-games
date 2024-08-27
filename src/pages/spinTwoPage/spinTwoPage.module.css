@@ -5,12 +5,6 @@
   background: url('../../assets/blue-bg.png');
   /* gap: 5vh; */
 
-  .heading{
-    h2{
-      font-size: 10vw;
-    }
-    /* border: 2px solid red; */
-  }
 
   .wheelWrapper{
     width: 100%;

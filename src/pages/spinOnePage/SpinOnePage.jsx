@@ -6,13 +6,14 @@ import spinnerBase from "../../assets/spin one/stand.png";
 import btnIcon from '../../assets/spin one/btnicon.png'
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
+import pointsBg from "./../../assets/points-bg.png";
 
-// winning angle 5607deg
+// winning angle 5783
 const angleArray = [
   29088, // 14524 + 30 = 14554, next step doubled
   14700, // 7264 + 60 = 7324, next step doubled
   7464,  // 3600 + 32 + 3632 (next step doubled)
-3900,
+  3900,
 ];
 
 export default function SpinOnePage() {
@@ -24,6 +25,7 @@ export default function SpinOnePage() {
   const [rotation, setRotaion] = useState(0);
   const [randomWin,setRandomWin] = useState(Math.floor(Math.random()*3)+1);
   const [isWin,setIsWin]=useState('');
+  const [spinScore,setSpinScore]=useState(0);
 
   console.log(randomWin,isWin,spinLeft,'random win is win and spin left')
   const navigate = useNavigate();
@@ -36,6 +38,12 @@ export default function SpinOnePage() {
     return "No Spins Left";
   };
 
+  const handleSpinScore=(score)=>{
+    setTimeout(()=>{
+      setSpinScore(prev=>prev+score);
+    },6000)
+  }
+
   const spinTheWheel = () => {
      
     if(isSpin || spinLeft==0) return
@@ -46,19 +54,19 @@ export default function SpinOnePage() {
         console.log('is win true');
         if(randomWin==spinLeft){
           console.log('confirm win');
-          setRotaion(5890);
-          setTimeout(()=>{
-            navigate('/')
-          },8000)
+          setRotaion(5783);
+          handleSpinScore(5);
           // return
         }else{
           setRotaion(angleArray[spinLeft]);
           setSpinLeft(prev=>prev-1);
+          handleSpinScore(1)
         }
     }else{
       if(spinLeft>0){ 
         setRotaion(angleArray[spinLeft]);
         setSpinLeft(prev=>prev-1);
+        handleSpinScore(1);
       }else{
         console.log('no spin left')
       }
@@ -68,6 +76,7 @@ export default function SpinOnePage() {
       setIsSpin(false);
     },6000);
   };
+  
   useEffect(()=>{
     const getWin=async()=>{
       try {
@@ -112,6 +121,16 @@ export default function SpinOnePage() {
       <div className={`flex-col-center ${styles.wheelWrapper}`}>
 
         {/* wheel container */}
+          {/* points */}
+          <div className={`flex-row-center ${styles.pointsContainer}`}>
+          <div className={`flex-row-center ${styles.pointsBg}`}>
+            <img src={pointsBg} alt="points-bg" />
+          </div>
+
+          <p className={styles.pointsTxt}>
+            {spinScore}
+          </p>
+        </div>
 
         {/* complete spinner  */}
 
