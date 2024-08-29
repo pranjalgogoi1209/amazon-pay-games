@@ -12,7 +12,7 @@ export default function FinalPage({ totalScore, restartGame }) {
   const [isConfetti, setIsConfetti] = useState(false);
 
   useEffect(() => {
-    if (totalScore > 15) {
+    if (totalScore > 16) {
       setIsConfetti(true);
       console.log("conffetti");
     }
@@ -33,7 +33,7 @@ export default function FinalPage({ totalScore, restartGame }) {
       </div>
       {isConfetti && <Confetti />}
       <div className={`flex-row-center ${styles.resultContainer}`}>
-        <img src={totalScore >= 15 ? win : loose} alt="result" />
+        <img src={totalScore > 16 ? win : loose} alt="result" />
       </div>
     </div>
   );
